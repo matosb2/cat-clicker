@@ -1,20 +1,43 @@
-var catNames = [];
-catNames.push("Stinker", "Chubber");
-var picA = $(".picA");
-var picB = $(".picB");
-picA.prepend("<h3>" + catNames[0] + "</h3>");
-picB.prepend("<h3>" + catNames[1] + "</h3>");
+var catNames = [{
+        img: "image/Stinker.jpg",
+        id: "Stinker"
+    },
 
-$(document).ready(function() {
-    $("#kitty").click(function() {
-    	$("#stink").html(function(i, val) {
-    		return val*1+1;
-    	});
-    });
+    {
+        img: "image/Chubaroo.jpg",
+        id: "Chubaroo"
+    },
 
-    $("#cat").click(function() {
-    	$("#chub").html(function(i, val) {
-    		return val*1+1;
-    	});
-    });
-});
+    {
+        img: "image/Pancakes.jpg",
+        id: "Pancakes"
+    },
+
+    {
+        img: "image/Fluffer.jpg",
+        id: "Fluffer"
+    },
+
+    {
+        img: "image/Chalupa.jpg",
+        id: "Chalupa"
+    }
+];
+var names, source;
+for (var i = 0; i < catNames.length; i++) {
+    names = catNames[i].id;
+    source = catNames[i].img;
+
+    var elem = document.createElement('li');
+    elem.textContent = names;
+
+
+    elem.addEventListener('click', (function(numCopy) {
+        return function() {
+        	$("#image").prepend("<img src=" + source + "></img>");
+        };
+    })(source));
+
+    document.getElementById("list").appendChild(elem);
+
+}
