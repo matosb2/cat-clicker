@@ -25,22 +25,21 @@ var catNames = [{
 ];
 
 
-var names, source;
+var currentCat;
 for (var i = 0; i < catNames.length; i++) {
-    names = catNames[i].id;
-    source = catNames[i].img;
+    currentCat = catNames[i];
 
     var elem = document.createElement('li');
-    elem.textContent = names;
+    elem.textContent = currentCat.id;
 
 
-    elem.addEventListener('click', (function(source) {
+    elem.addEventListener('click', (function(currentCat) {
         return function() {
-            $("#nombre").empty().prepend("<h3>" + names + "</h3>"); 
+            $("#nombre").empty().prepend("<h3>" + currentCat.id + "</h3>"); 
             $(".count").html("0");
-            $(".test").attr('src', source);
+            $(".test").attr('src', currentCat.img);
         };
-    })(source));
+    })(currentCat));
     document.getElementById("list").appendChild(elem);
 }
 
