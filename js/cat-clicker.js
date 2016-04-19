@@ -23,6 +23,8 @@ var catNames = [{
         id: "Chalupa"
     }
 ];
+
+
 var names, source;
 for (var i = 0; i < catNames.length; i++) {
     names = catNames[i].id;
@@ -32,12 +34,19 @@ for (var i = 0; i < catNames.length; i++) {
     elem.textContent = names;
 
 
-    elem.addEventListener('click', (function(numCopy) {
+    elem.addEventListener('click', (function(source) {
         return function() {
-        	$("#image").prepend("<img src=" + source + "></img>");
+            $("#nombre").empty().prepend("<h3>" + names + "</h3>"); 
+            $(".count").html("0");
+            $(".test").attr('src', source);
         };
     })(source));
-
     document.getElementById("list").appendChild(elem);
-
 }
+
+
+$(".test").click(function() {
+    $(".count").html(function(i, val) {
+        return val * 1 + 1;
+    });
+});
